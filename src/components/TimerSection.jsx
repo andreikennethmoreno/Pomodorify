@@ -4,6 +4,7 @@ import Countdown from 'react-countdown';
 import { useRef,useState, useEffect } from 'react';
 import { Howl } from 'howler'; // Import Howler.js
 import { resetCompletedPomodoros, incrementCompletedPomodoros } from '../redux/timerSlice';
+import ToggleFx from "../assets/switch.mp3"
 
 export default function TimerSection({activeTab, setActiveTab}) {
     const dispatch = useDispatch();
@@ -20,6 +21,10 @@ export default function TimerSection({activeTab, setActiveTab}) {
     const [soundEffect, setSoundEffect] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
+    const toggleSound = new Howl({
+        src: [ToggleFx],
+        volume: 1,
+    });
 
     const playSoundEffect = () => {
         if (soundEffect && !isPlaying) {
@@ -73,9 +78,11 @@ export default function TimerSection({activeTab, setActiveTab}) {
         }
         
         dispatch(toggleTimer());
-    
+        toggleSound.play();
+
         // Additional code to stop the sound effect if it's playing
         shouldStop = true; // Set flag to true to stop any ongoing playback
+        
     };
 
     const times = {
