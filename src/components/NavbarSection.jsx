@@ -1,5 +1,4 @@
 import { SettingsIcon, CheckBoxIcon } from "../assets/Icons";
-
 import SettingsModal from "./SettingsModal";
 
 export default function NavbarSection () {
@@ -7,7 +6,6 @@ export default function NavbarSection () {
     const openModal = () => {
         document.getElementById('my_modal_1').showModal();
       };
-
 
     return (
         <>

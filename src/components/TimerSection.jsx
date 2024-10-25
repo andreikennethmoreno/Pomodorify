@@ -95,7 +95,6 @@ export default function TimerSection({activeTab, setActiveTab}) {
         playSoundEffect(); // Use the new play function
         if (activeTab === 'Pomodoro') {
             dispatch(incrementCompletedPomodoros());
-    
             if (completedPomodoros >= pomodorosBeforeLongBreak) {
                 setActiveTab('Long Break');
                 dispatch(resetCompletedPomodoros());
@@ -105,6 +104,8 @@ export default function TimerSection({activeTab, setActiveTab}) {
         } else if (activeTab === 'Short Break') {
             setActiveTab('Pomodoro');
         }
+        dispatch(toggleTimer());
+
     };
     
     // Renderer for the Countdown
